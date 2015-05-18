@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 class MoneyTransfer {
   // static String HOST = "server.com";
@@ -24,6 +25,8 @@ class MoneyTransfer {
         DataOutputStream out = new DataOutputStream(bank.getOutputStream());
         InputStreamReader isr = new InputStreamReader(bank.getInputStream());
 
+        long startTime = (new Date()).getTime();
+
         out.writeBytes(source + target + key);
         char[] resp = new char[10];
         isr.read(resp, 0, 10);
@@ -32,7 +35,10 @@ class MoneyTransfer {
         out.writeBytes(new String(resp) + "5000");
         char[] ok = new char[2];
         isr.read(ok, 0, 2);
-        System.err.printf("ok=%s\n", new String(ok));
+
+        long finishTime = (new Date()).getTime();
+
+        System.err.printf("ok=%s, start=%d, end=%d, total=%d\n", new String(ok), startTime, finishTime, finishTime - startTime);
         bank.close();
       }
       catch (UnknownHostException uhe) {

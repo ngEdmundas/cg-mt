@@ -6,10 +6,14 @@ var server = net.createServer(function (socket) {
     //console.log('data socket=', socket);
     console.log('data=', str, 'bytesRead=', socket.bytesRead);
     if (socket.bytesRead === 30) {
-      socket.write('abc12xyz98');
+      setTimeout(function () {
+        socket.write('abc12xyz98');
+      }, 300);
     }
     if (socket.bytesRead === 44) {
-      socket.write('ok');
+      setTimeout(function () {
+        socket.write('ok');
+      }, 300);
     }
   });
   socket.on('close', function (data) {
