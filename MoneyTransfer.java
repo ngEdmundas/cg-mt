@@ -73,9 +73,9 @@ class MoneyTransfer {
   }
 
   public static void main(String[] args) {
-    String accSource = "374c5a446f";
-    String accTarget = "5872303531";
-    String key = "7LZDoXr051";
+    String accSource = "486579204e";
+    String accTarget = "6173646171";
+    String key = "Hey Nasdaq";
     System.out.printf("Source account=%s, target account=%s, key=%s\n", accSource, accTarget, key);
     start(accSource, accTarget);
   }
